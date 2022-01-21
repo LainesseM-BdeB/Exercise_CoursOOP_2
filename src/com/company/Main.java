@@ -42,28 +42,26 @@ public class Main {
             }
             System.out.printf("Which exercise do you want to try? (1 to %d)\nType Exit to quit\n", nbMethods);
             exNum = inputR.nextLine().strip().toLowerCase();
-            try {
-                exNumInt = Integer.parseInt(exNum);
-            } catch (Exception e) {
-                if (!(exNum.equals("exit"))) {
+            if (!(exNum.equals("exit"))) {
+                try {
+                    exNumInt = Integer.parseInt(exNum);
+                } catch (Exception e) {
                     System.out.println("Please write a number.");
+                    exNumInt = 0;
                 }
-                exNumInt = 0;
-            }
-            if (!(exNumInt > nbMethods) && !(exNumInt < 1)) {
-                System.out.println(exDesc[exNumInt - 1]);
-                System.out.println("Do you want to proceed with this exercise? (Y/N)");
-                yn = inputR.nextLine().strip().toLowerCase();
-                if (yn.equals("y")) {
-                    System.out.println("Loading the exercise. Enjoy!");
-                    obj.getClass().getMethod(exBaseName + exNum).invoke(obj);
-                    System.out.println("Press enter to continue.");
-                    inputR.nextLine();
+                if (!(exNumInt > nbMethods) && !(exNumInt < 1)) {
+                    System.out.println(exDesc[exNumInt - 1]);
+                    System.out.println("Do you want to proceed with this exercise? (Y/N)");
+                    yn = inputR.nextLine().strip().toLowerCase();
+                    if (yn.equals("y")) {
+                        System.out.println("Loading the exercise. Enjoy!");
+                        obj.getClass().getMethod(exBaseName + exNum).invoke(obj);
+                        System.out.println("Press enter to continue.");
+                        inputR.nextLine();
+                    } else {
+                        System.out.println("Going back to the main menu.");
+                    }
                 } else {
-                    System.out.println("Going back to the main menu.");
-                }
-            } else {
-                if (!(exNum.equals("exit"))) {
                     System.out.println("Please select a number that is within the appropriate range.");
                 }
             }
