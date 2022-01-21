@@ -8,7 +8,7 @@ import org.apache.commons.math3.util.CombinatoricsUtils;
 public class Exercise {
 
     public static void ex1() {
-        System.out.println("Exercise #1 - Print an input");
+        System.out.println("\n\nExercise #1 - Print an input");
         Scanner scanner = new Scanner(System.in);
         String name;
         System.out.println("Please enter your name?");
