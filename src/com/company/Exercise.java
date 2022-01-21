@@ -3,10 +3,12 @@ package com.company;
 import java.util.*;
 
 import org.apache.commons.math3.util.ArithmeticUtils;
+import org.apache.commons.math3.util.CombinatoricsUtils;
 
 public class Exercise {
 
     public static void ex1() {
+        System.out.println("Exercise #1 - Print an input");
         Scanner scanner = new Scanner(System.in);
         String name;
         System.out.println("Please enter your name?");
@@ -15,6 +17,7 @@ public class Exercise {
     }
 
     public static void ex2() {
+        System.out.println("\n\nExercise #2 - Print from two input");
         Scanner scanner = new Scanner(System.in);
         String name;
         String m;
@@ -29,6 +32,7 @@ public class Exercise {
     }
 
     public static void ex3() {
+        System.out.println("\n\nExercise #3 - Printing a multiplication table up to 10");
         Scanner scanner = new Scanner(System.in);
         int num;
         System.out.println("Please enter an Integer to get a multiplication table up to 10.");
@@ -39,6 +43,7 @@ public class Exercise {
     }
 
     public static void ex4() {
+        System.out.println("\n\nExercise #4 - Print the inverse of the numbers between -3 and 3");
         Scanner scanner = new Scanner(System.in);
         int num;
         num = -3;
@@ -54,12 +59,14 @@ public class Exercise {
     }
 
     public static void ex5() {
+        System.out.println("\n\nExercise #5 - Print the square of all the numbers between 0 and 10");
         for (int i = 0; i <= 10; i++) {
             System.out.println(i*i);
         }
     }
 
     public static void ex6() {
+        System.out.println("\n\nExercise #6 - Echo an input until the user write a specific string");
         Scanner scanner = new Scanner(System.in);
         String answer;
         do {
@@ -74,6 +81,7 @@ public class Exercise {
     }
 
     public static void ex7() {
+        System.out.println("\n\nExercise #7 - Read integers until the user input 0 and then prints the Maximum");
         Scanner scanner = new Scanner(System.in);
         ArrayList<Integer> nums = new ArrayList<Integer>();
         int num;
@@ -81,9 +89,7 @@ public class Exercise {
         do {
             System.out.println("Please enter a positive a interger.\n(Enter 0 to exit.)");
             num = scanner.nextInt();
-            System.out.println("The input was: " + num);
             if (num == 0) {
-                System.out.println("EXIT!");
                 break;
             } else if (num < 0) {
                 System.out.println("Please enter an integer above 0.");
@@ -91,10 +97,11 @@ public class Exercise {
                 answer = num;
             }
         } while(true);
-        System.out.println(answer);
+        System.out.println("The maximum was: " + answer);
     }
 
     public static void ex8() {
+        System.out.println("\n\nExercise #8 - Read integers until the user input 0 and then prints the Minimum");
         Scanner scanner = new Scanner(System.in);
         ArrayList<Integer> nums = new ArrayList<Integer>();
         int num;
@@ -102,7 +109,6 @@ public class Exercise {
         do {
             System.out.println("Please enter a positive a interger.\n(Enter 0 to exit.)");
             num = scanner.nextInt();
-            System.out.println("The input was: " + num);
             if (num == 0) {
                 break;
             } else if (num < 0) {
@@ -111,10 +117,11 @@ public class Exercise {
                 answer = num;
             }
         } while(true);
-        System.out.println(answer);
+        System.out.println("The minimum was: " + answer);
     }
 
     public static void ex9() {
+        System.out.println("\n\nExercise #9 - Read integers until the user input 0 and then prints the Sum");
         Scanner scanner = new Scanner(System.in);
         ArrayList<Integer> nums = new ArrayList<Integer>();
         int num;
@@ -122,7 +129,6 @@ public class Exercise {
         do {
             System.out.println("Please enter a positive a interger.\n(Enter 0 to exit.)");
             num = scanner.nextInt();
-            System.out.println("The input was: " + num);
             if (num == 0) {
                 break;
             } else {
@@ -132,18 +138,18 @@ public class Exercise {
         for (int n : nums) {
             answer += n;
         }
-        System.out.println(answer);
+        System.out.println("The sum was: " + answer);
     }
 
     public static void ex10() {
+        System.out.println("\n\nExercise #10 - Read integers until the user input 0 and then prints the Average");
         Scanner scanner = new Scanner(System.in);
         ArrayList<Integer> nums = new ArrayList<Integer>();
         int num;
-        int answer = 0;
+        double answer = 0;
         do {
             System.out.println("Please enter a positive a interger.\n(Enter 0 to exit.)");
             num = scanner.nextInt();
-            System.out.println("The input was: " + num);
             if (num == 0) {
                 break;
             } else {
@@ -154,10 +160,11 @@ public class Exercise {
            answer += n;
         }
         int numsL = nums.size();
-        System.out.println(answer / numsL);
+        System.out.println("The average was: " + answer / numsL);
     }
 
     public static void ex11() {
+        System.out.println("\n\nExercise #11 - Prints a random number selected from 3 specified ranges");
         Random rGen = new Random();
         int num;
         num = rGen.nextInt(0, 51);
@@ -169,21 +176,37 @@ public class Exercise {
     }
 
     public static void ex12() {
+        System.out.println("\n\nExercise #12 - Selects two random numbers but one must absolutely be the double of the other");
         Random rgen = new Random();
         int num;
-        int numx2;
-        num = rgen.nextInt(0, 51);
-        numx2 = num * 2;
-        System.out.println("The random number is: " + num + "\nThe random number times 2 is: " + numx2);
+        int num2;
+        int rMin = 1;
+        int rMax = 51;
+        do {
+            num = rgen.nextInt(rMin, rMax);
+        } while (num % 2 == 1);
+        if (num > 25) {
+            rMax = 26;
+            do {
+                num2 = rgen.nextInt(rMin, rMax);
+            } while (num / num2 != 2);
+        } else {
+            rMin = 25;
+            do {
+                num2 = rgen.nextInt(rMin, rMax);
+            } while (num2 / num != 2);
+        }
+        System.out.println("The random numbers are: " + num + " and " + num2);
     }
 
     public static void ex13() {
+        System.out.println("\n\nExercise #13 - The user needs to guess a random number between 1 and 10");
         Random rgen = new Random();
         Scanner scanner = new Scanner(System.in);
-        int secret = rgen.nextInt(11);
+        int secret = rgen.nextInt(1, 11);
         int num;
         do {
-            System.out.println("Please guess a number between 0 and 10.");
+            System.out.println("Please guess a number between 1 and 10.");
             num = scanner.nextInt();
             if (num == secret) {
                 System.out.println("YOU WON!");
@@ -197,6 +220,7 @@ public class Exercise {
     }
 
     public static void ex14() {
+        System.out.println("\n\nExercise #14 - Calculates the formula ax^2 + bx + c with a, b, c being selected by the user and x being chosen randomly");
         Random rGen = new Random();
         Scanner scanner = new Scanner(System.in);
         HashMap varMap = new HashMap<String, Integer>();
@@ -213,10 +237,11 @@ public class Exercise {
         int b = (int)varMap.get("b");
         int c = (int)varMap.get("c");
         answer = (int)(Math.pow((a * x), 2) + (b * x) + c);
-        System.out.println("The answer to the equation ax^2 + bx + c is: " + answer);
+        System.out.printf("The answer to the equation %dx^2 + %dx + %d is: %s\n", a, b, c, answer);
     }
 
     public static void ex15() {
+        System.out.println("\n\nExercise #15 - The user selects a month and a year and it prints the number of days in that month");
         Scanner scanner = new Scanner(System.in);
         String month;
         int year;
@@ -252,6 +277,7 @@ public class Exercise {
     }
 
     public static void ex16() {
+        System.out.println("\n\nExercise #16 - Prints the number of times the character a user inputs is present in a fixed string");
         Scanner scanner = new Scanner(System.in);
         String longString = "The lazy fox jumps over the brown dog.";
         String cIn;
@@ -263,9 +289,10 @@ public class Exercise {
     }
 
     public static void ex17() {
+        System.out.println("\n\nExercise #17 - Prints the Sum of all the positive integers up to the user's input");
         Scanner scanner = new Scanner(System.in);
         int num;
-        int sum = 0;
+        double sum = 0;
         System.out.println("Please input a positive integer:");
         num = scanner.nextInt();
         for (int i = 1; i <= num; i++) {
@@ -275,9 +302,10 @@ public class Exercise {
     }
 
     public static void ex18() {
+        System.out.println("\n\nExercise #18 - Prints the Product of all the positive integers up to the user's input");
         Scanner scanner = new Scanner(System.in);
         int num;
-        int prod = 1;
+        double prod = 1;
         System.out.println("Please input a positive integer:");
         num = scanner.nextInt();
         for (int i = 1; i <= num; i++) {
@@ -287,13 +315,36 @@ public class Exercise {
     }
 
     public static void ex19() {
+        System.out.println("\n\nExercise #19 - Prints the Factorial of the positive integer from the user's input");
         Scanner scanner = new Scanner(System.in);
         int num;
-        int fac;
+        double fac;
         System.out.println("Please input a positive integer:");
         num = scanner.nextInt();
-        fac = (int)ArithmeticUtils.factorial(num);
+        fac = (int) CombinatoricsUtils.factorial(num);
         System.out.println("The factorial was: " + fac);
+    }
+
+    public static void ex20() {
+        System.out.println("\n\nExercise #20 - Prints the Combinations of the two positive integers from the user's input");
+        Scanner scanner = new Scanner(System.in);
+        int numA;
+        int numB;
+        double facA;
+        double facB;
+        double facAminB;
+        double answer;
+        System.out.println("Please input a positive integer:");
+        numA = scanner.nextInt();
+        facA = CombinatoricsUtils.factorialDouble(numA);
+        do {
+            System.out.println("Please input a second positive integer that is smaller than " + numA);
+            numB = scanner.nextInt();
+        } while (numA < numB);
+        facB = CombinatoricsUtils.factorialDouble(numB);
+        facAminB = CombinatoricsUtils.factorialDouble(numA - numB);
+        answer = facA/(facB * facAminB);
+        System.out.println("The combination of your first number with the second one is:\n" + answer);
     }
 
 }
